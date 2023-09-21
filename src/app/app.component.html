@@ -1,0 +1,37 @@
+<div class="branding">
+ <!-- to be implemented -->
+</div>
+
+<div class="selection-area">
+  <p style="margin-right: 5px;">Select a car model:</p>
+
+  <!-- To be implemented: -->
+  <p-dropdown
+    placeholder="Select a make"
+  ></p-dropdown>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center">
+  <div *ngFor="let singleModel of models; index as idx" style="flex-basis: 20%">
+    <p-card
+      header="{{ selectedMake + ' ' + models[idx] }}"
+      [style]="{
+        width: '300px',
+        height: '400px',
+        margin: '20px'
+      }"
+    >
+      <ng-template pTemplate="header">
+        <img
+          alt="Card"
+          src="{{ photos[idx] }}"
+          style="height: 200px; object-fit: cover"
+        />
+      </ng-template>
+      
+      <ng-template pTemplate="p-card-content">
+        
+      </ng-template>
+    </p-card>
+  </div>
+</div>
