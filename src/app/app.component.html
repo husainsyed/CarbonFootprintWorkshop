@@ -1,18 +1,22 @@
 <div class="branding">
- <!-- to be implemented -->
+  <!-- to be implemented -->
+  <img class="logo" src="../../assets/logo.png" />
+  <span class="branding-text">Chevron Carbon Footprint Tracker</span>
 </div>
 
 <div class="selection-area">
-  <p style="margin-right: 5px;">Select a car model:</p>
+  <p style="margin-right: 5px">Select a car model:</p>
 
   <!-- To be implemented: -->
   <p-dropdown
     placeholder="Select a make"
+    [options]="makes"
+    (onChange)="clearAllArrays(); onMakeSelect($event.value)"
   ></p-dropdown>
 </div>
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center">
-  <div *ngFor="let singleModel of models; index as idx" style="flex-basis: 20%">
+  <div *ngFor="let singlePhoto of photos; index as idx" style="flex-basis: 20%">
     <p-card
       header="{{ selectedMake + ' ' + models[idx] }}"
       [style]="{
@@ -28,9 +32,9 @@
           style="height: 200px; object-fit: cover"
         />
       </ng-template>
-      
+
       <ng-template pTemplate="p-card-content">
-        
+        <div>Emission: {{ emissions[idx].co2e_lb }} CO2/lb</div>
       </ng-template>
     </p-card>
   </div>

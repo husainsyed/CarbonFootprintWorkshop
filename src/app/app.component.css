@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=JetBrains Mono");
 
+.logo {
+  margin: 20px;
+  width: 120px;
+  height: 120px;
+}
+
 .branding {
   margin-top: 20px;
   display: flex;
@@ -23,10 +29,11 @@
 
 .branding-text,
 .getting-started {
-  font-size: 55px;
+  font-size: 30px;
   color: black !important;
   margin-bottom: 0px;
   margin-top: 20px;
+  font-weight: bold;
 }
 
 .getting-started {

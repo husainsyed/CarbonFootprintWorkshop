@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { makeModel } from '../models/make.model';
+import { makeModel, modelModel } from '../models/make.model';
 import { emissionModel } from '../models/emission.model';
 import { photosModel } from '../models/photos.model';
 
@@ -11,14 +11,16 @@ import { photosModel } from '../models/photos.model';
 // the api host which is where should we access this api
 // and the query string which allows to pass urls
 
+const API_KEY = "XYZ123"
+
 const API_HEADERS = {
-  'X-RapidAPI-Key': 'XXXXX',
+  'X-RapidAPI-Key': API_KEY,
   'X-RapidAPI-Host': 'carbonsutra1.p.rapidapi.com',
   useQueryString: 'true',
 };
 
 const DUCKDUCKGOAPI_HEADERS = {
-  'X-RapidAPI-Key': 'XXXXX',
+  'X-RapidAPI-Key': API_KEY,
   'X-RapidAPI-Host': 'duckduckgo-image-search.p.rapidapi.com',
 };
 
@@ -36,7 +38,7 @@ export class SearchService {
   emissionModel?: emissionModel;
   photosModel?: photosModel;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getMakes(): Observable<makeModel> {
     const headers = new HttpHeaders(API_HEADERS);
@@ -44,10 +46,10 @@ export class SearchService {
     return this.http.get<makeModel>(API_URL, { headers });
   }
 
-  getModels(make: string): Observable<makeModel> {
+  getModels(make: string): Observable<modelModel> {
     const headers = new HttpHeaders(API_HEADERS);
     const API_URL = `https://carbonsutra1.p.rapidapi.com/vehicle_makes/${make}/vehicle_models`;
-    return this.http.get<makeModel>(API_URL, { headers });
+    return this.http.get<modelModel>(API_URL, { headers });
   }
 
   getEmissions(make: string, model: string): Observable<emissionModel> {
