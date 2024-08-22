@@ -11,7 +11,7 @@
   <p-dropdown
     placeholder="Select a make"
     [options]="makes"
-    (onChange)="clearAllArrays(); onMakeSelect($event.value)"
+    (onChange)="onMakeSelect($event.value)"
   ></p-dropdown>
 </div>
 

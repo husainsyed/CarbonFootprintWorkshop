@@ -21,21 +21,21 @@ import { lastValueFrom, timer } from 'rxjs';
 })
 export class AppComponent {
   title = 'carbon-tracker';
-  makes: any[] = [];
-  models: any[] = [];
+  makes: string[] = [];
+  models: string[] = [];
   emissions: any[] = [];
-  photos: any[] = [];
-  selectedMake?: any;
+  photos: string[] = [];
+  selectedMake: string = "";
 
   constructor(private _searchSrv: SearchService) { }
 
   ngOnInit() {
     this.clearAllArrays();
-    this.getAllMakes();
+    this.fetchAllMakes();
     // this.makes.push("Honda", "Toyota", "Tesla")
   }
 
-  getAllMakes() {
+  fetchAllMakes() {
     //to be implemented
     this._searchSrv.getMakes().subscribe(
       {
@@ -56,6 +56,7 @@ export class AppComponent {
     // populate the models
 
     // this.models
+    this.clearAllArrays()
     this.selectedMake = event
     this.getAllModels(this.selectedMake)
 
